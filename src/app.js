@@ -1,6 +1,7 @@
 const express = require("express");
 
 const productsRoutes = require("./routes/products.routes");
+const categoriesRoutes = require("./routes/categories.routes");
 
 const app = express();
 
@@ -10,12 +11,14 @@ app.get("/", (req, res) => {
   res.json({
     message: "API de productos activa",
     endpoints: {
-      products: "/api/products"
-    }
+      products: "/api/products",
+      categories: "/api/categories",
+    },
   });
 });
 
 app.use("/api/products", productsRoutes);
+app.use("/api/categories", categoriesRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Ruta no encontrada" });
@@ -39,7 +42,7 @@ app.use((error, req, res, next) => {
   }
 
   return res.status(error.status || 500).json({
-    message: error.message || "Error interno del servidor"
+    message: error.message || "Error interno del servidor",
   });
 });
 

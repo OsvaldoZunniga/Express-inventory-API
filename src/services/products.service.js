@@ -17,6 +17,10 @@ const normalizePayload = (payload = {}) => {
     normalized.stock = Number(payload.stock);
   }
 
+  if (payload.categoryId !== undefined) {
+    normalized.categoryId = String(payload.categoryId).trim();
+  }
+
   return normalized;
 };
 
@@ -34,6 +38,15 @@ const findProductById = async (id) => {
 
 const createProduct = async (payload) => {
   const normalized = normalizePayload(payload);
+
+  const categoryExists = await Category.exists({ _id: normalized.categoryId });
+
+  if (!categoryExists) {
+    const error = new Error("La categoría especificada no existe");
+    error.status = 400;
+    throw error;
+  }
+
   return Product.create(normalized);
 };
 
@@ -46,7 +59,7 @@ const updateProduct = async (id, payload) => {
 
   return Product.findByIdAndUpdate(id, normalized, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 };
 
@@ -64,5 +77,5 @@ module.exports = {
   findProductById,
   createProduct,
   updateProduct,
-  removeProduct
+  removeProduct,
 };

@@ -44,25 +44,31 @@ En `package.json`:
 ## Estructura de carpetas
 
 ```text
-expressjs/
-├─ src/
-│  ├─ app.js
-│  ├─ server.js
-│  ├─ config/
-│  │  └─ database.js
-│  ├─ routes/
-│  │  └─ products.routes.js
-│  ├─ controllers/
-│  │  └─ products.controller.js
-│  ├─ services/
-│  │  └─ products.service.js
-│  ├─ models/
-│  │  └─ product.model.js
-├─ .gitignore
-├─ index.js
-├─ package.json
-├─ package-lock.json
-└─ README.md
+ExpressApp
+├── .env
+├── .gitignore
+├── index.js
+├── package-lock.json
+├── package.json
+├── pnpm-lock.yaml
+├── README.md
+├── src
+│   ├── app.js
+│   ├── config
+│   │   └── database.js
+│   ├── controllers
+│   │   ├── category.controller.js
+│   │   └── products.controller.js
+│   ├── models
+│   │   ├── category.model.js
+│   │   └── product.model.js
+│   ├── routes
+│   │   ├── category.route.js
+│   │   └── products.routes.js
+│   ├── server.js
+│   └── services
+│       ├── category.service.js
+│       └── products.service.js
 ```
 
 ## Flujo de arquitectura
@@ -100,8 +106,19 @@ Server listening on http://localhost:3000
 Base URL: `http://localhost:3000`
 
 - `GET /`: estado de la API
+
+### Productos
+
 - `GET /api/products`: listar productos
 - `GET /api/products/:id`: obtener producto por ID (ObjectId de Mongo)
 - `POST /api/products`: crear producto
 - `PUT /api/products/:id`: actualizar producto por ID
 - `DELETE /api/products/:id`: eliminar producto por ID
+
+### Categorias
+
+- `GET /api/categories`: listar categorias
+- `GET /api/categories/:id`: obtener categoria por ID (ObjectId de Mongo)
+- `POST /api/categories`: crear categoria
+- `PUT /api/categories/:id`: actualizar categoria por ID
+- `DELETE /api/categories/:id`: eliminar categoria por ID

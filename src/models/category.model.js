@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-name(único);
-description;
-isActive;
+
 const categorySchema = new mongoose.Schema(
   {
     name: {

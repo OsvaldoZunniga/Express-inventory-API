@@ -38,6 +38,15 @@ const findProductById = async (id) => {
 
 const createProduct = async (payload) => {
   const normalized = normalizePayload(payload);
+
+  const categoryExists = await Category.exists({ _id: normalized.categoryId });
+
+  if (!categoryExists) {
+    const error = new Error("La categoría especificada no existe");
+    error.status = 400;
+    throw error;
+  }
+
   return Product.create(normalized);
 };
 

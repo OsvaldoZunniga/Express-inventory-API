@@ -1,7 +1,7 @@
 {
   "name": "expressjs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Proyecto base con Express.js, organizado por carpetas y conectado a MongoDB Atlas.\r El CRUD de productos persiste datos en la base de datos.",
   "license": "ISC",
   "author": "",
   "type": "commonjs",
@@ -12,10 +12,21 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "mongodb": "^7.5.0",
     "mongoose": "^8.24.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OsvaldoZunniga/Express-inventory-API.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/OsvaldoZunniga/Express-inventory-API/issues"
+  },
+  "homepage": "https://github.com/OsvaldoZunniga/Express-inventory-API#readme"
 }

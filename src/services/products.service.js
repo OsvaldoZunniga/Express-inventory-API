@@ -17,6 +17,10 @@ const normalizePayload = (payload = {}) => {
     normalized.stock = Number(payload.stock);
   }
 
+  if (payload.categoryId !== undefined) {
+    normalized.categoryId = String(payload.categoryId).trim();
+  }
+
   return normalized;
 };
 
@@ -46,7 +50,7 @@ const updateProduct = async (id, payload) => {
 
   return Product.findByIdAndUpdate(id, normalized, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 };
 
@@ -64,5 +68,5 @@ module.exports = {
   findProductById,
   createProduct,
   updateProduct,
-  removeProduct
+  removeProduct,
 };

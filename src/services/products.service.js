@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
 const Product = require("../models/product.model");
+const Category = require("../models/category.model");
+const Supplier = require("../models/supplier.model");
 
 const normalizePayload = (payload = {}) => {
   const normalized = {};
@@ -19,6 +21,10 @@ const normalizePayload = (payload = {}) => {
 
   if (payload.categoryId !== undefined) {
     normalized.categoryId = String(payload.categoryId).trim();
+  }
+
+  if (payload.supplierId !== undefined) {
+    normalized.supplierId = String(payload.supplierId).trim();
   }
 
   return normalized;
@@ -47,6 +53,20 @@ const createProduct = async (payload) => {
     throw error;
   }
 
+  if (normalized.supplierId) {
+    if (!mongoose.Types.ObjectId.isValid(normalized.supplierId)) {
+      const error = new Error("El ID del proveedor es inválido");
+      error.status = 400;
+      throw error;
+    }
+    const supplierExists = await Supplier.exists({ _id: normalized.supplierId });
+    if (!supplierExists) {
+      const error = new Error("El proveedor especificado no existe");
+      error.status = 400;
+      throw error;
+    }
+  }
+
   return Product.create(normalized);
 };
 
@@ -56,6 +76,29 @@ const updateProduct = async (id, payload) => {
   }
 
   const normalized = normalizePayload(payload);
+
+  if (normalized.categoryId) {
+    const categoryExists = await Category.exists({ _id: normalized.categoryId });
+    if (!categoryExists) {
+      const error = new Error("La categoría especificada no existe");
+      error.status = 400;
+      throw error;
+    }
+  }
+
+  if (normalized.supplierId) {
+    if (!mongoose.Types.ObjectId.isValid(normalized.supplierId)) {
+      const error = new Error("El ID del proveedor es inválido");
+      error.status = 400;
+      throw error;
+    }
+    const supplierExists = await Supplier.exists({ _id: normalized.supplierId });
+    if (!supplierExists) {
+      const error = new Error("El proveedor especificado no existe");
+      error.status = 400;
+      throw error;
+    }
+  }
 
   return Product.findByIdAndUpdate(id, normalized, {
     new: true,

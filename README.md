@@ -59,16 +59,20 @@ ExpressApp
 │   ├── controllers
 │   │   ├── category.controller.js
 │   │   └── products.controller.js
+│   │   └── suppliers.controller.js
 │   ├── models
 │   │   ├── category.model.js
 │   │   └── product.model.js
+│   │   └── supplier.model.js
 │   ├── routes
 │   │   ├── category.route.js
 │   │   └── products.routes.js
+│   │   └── suppliers.routes.js
 │   ├── server.js
 │   └── services
 │       ├── category.service.js
-│       └── products.service.js
+│       ├── products.service.js
+│       └── suppliers.service.js
 ```
 
 ## Flujo de arquitectura
@@ -122,3 +126,11 @@ Base URL: `http://localhost:3000`
 - `POST /api/categories`: crear categoria
 - `PUT /api/categories/:id`: actualizar categoria por ID
 - `DELETE /api/categories/:id`: eliminar categoria por ID
+
+### Proveedores
+
+- `GET /api/suppliers`: listar proveedores
+- `GET /api/suppliers/:id`: obtener proveedor por ID (ObjectId de Mongo)
+- `POST /api/suppliers`: crear proveedor
+- `PUT /api/suppliers/:id`: actualizar proveedor por ID
+- `DELETE /api/suppliers/:id`: eliminar proveedor por ID

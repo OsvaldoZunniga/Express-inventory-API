@@ -107,6 +107,38 @@ Base URL: `http://localhost:3000`
 
 - `GET /`: estado de la API
 
+### Categorias
+
+- `GET /api/categories`: listar categorias
+- `GET /api/categories/:id`: obtener categoria por ID (ObjectId de Mongo)
+- `POST /api/categories`: crear categoria
+- `PUT /api/categories/:id`: actualizar categoria por ID
+- `DELETE /api/categories/:id`: eliminar categoria por ID
+
+#### Ejemplos de Req and Res
+
+Request
+
+```json
+{
+  "name": "Electronics",
+  "description": "Electronic devices, components, and accessories for inventory management."
+}
+```
+
+Response
+
+```json
+{
+  "name": "Electronics",
+  "description": "Electronic devices, components, and accessories for inventory management.",
+  "isActive": true,
+  "createdAt": "2026-07-28T19:43:24.882Z",
+  "updatedAt": "2026-07-28T19:43:24.882Z",
+  "id": "6a69065c4f85c88df549ca00"
+}
+```
+
 ### Productos
 
 - `GET /api/products`: listar productos
@@ -115,10 +147,29 @@ Base URL: `http://localhost:3000`
 - `PUT /api/products/:id`: actualizar producto por ID
 - `DELETE /api/products/:id`: eliminar producto por ID
 
-### Categorias
+#### Ejemplos de Req and Res
 
-- `GET /api/categories`: listar categorias
-- `GET /api/categories/:id`: obtener categoria por ID (ObjectId de Mongo)
-- `POST /api/categories`: crear categoria
-- `PUT /api/categories/:id`: actualizar categoria por ID
-- `DELETE /api/categories/:id`: eliminar categoria por ID
+Request
+
+```json
+{
+  "name": "Wireless Noise-Canceling Headphones",
+  "price": 149.99,
+  "stock": 45,
+  "categoryId": "6a69065c4f85c88df549ca00"
+}
+```
+
+Response
+
+```json
+{
+  "name": "Wireless Noise-Canceling Headphones",
+  "price": 149.99,
+  "stock": 45,
+  "categoryId": "6a69065c4f85c88df549ca00",
+  "createdAt": "2026-07-28T19:49:52.229Z",
+  "updatedAt": "2026-07-28T19:49:52.229Z",
+  "id": "6a6907e00225473f7f8f3ad0"
+}
+```

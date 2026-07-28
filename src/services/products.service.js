@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const Product = require("../models/product.model");
+const Category = require("../models/category.model");
 
 const normalizePayload = (payload = {}) => {
   const normalized = {};

@@ -59,16 +59,20 @@ ExpressApp
 │   ├── controllers
 │   │   ├── category.controller.js
 │   │   └── products.controller.js
+│   │   └── suppliers.controller.js
 │   ├── models
 │   │   ├── category.model.js
 │   │   └── product.model.js
+│   │   └── supplier.model.js
 │   ├── routes
 │   │   ├── category.route.js
 │   │   └── products.routes.js
+│   │   └── suppliers.routes.js
 │   ├── server.js
 │   └── services
 │       ├── category.service.js
-│       └── products.service.js
+│       ├── products.service.js
+│       └── suppliers.service.js
 ```
 
 ## Flujo de arquitectura
@@ -156,7 +160,8 @@ Request
   "name": "Wireless Noise-Canceling Headphones",
   "price": 149.99,
   "stock": 45,
-  "categoryId": "6a69065c4f85c88df549ca00"
+  "categoryId": "6a69065c4f85c88df549ca00",
+  "supplierId": "6a690d2fa1c1b3a868df86a6"
 }
 ```
 
@@ -168,8 +173,45 @@ Response
   "price": 149.99,
   "stock": 45,
   "categoryId": "6a69065c4f85c88df549ca00",
-  "createdAt": "2026-07-28T19:49:52.229Z",
-  "updatedAt": "2026-07-28T19:49:52.229Z",
-  "id": "6a6907e00225473f7f8f3ad0"
+  "supplierId": "6a690d2fa1c1b3a868df86a6",
+  "createdAt": "2026-07-28T20:15:29.972Z",
+  "updatedAt": "2026-07-28T20:15:29.972Z",
+  "id": "6a690de1a1c1b3a868df86aa"
+}
+```
+
+### Proveedores
+
+- `GET /api/suppliers`: listar proveedores
+- `GET /api/suppliers/:id`: obtener proveedor por ID (ObjectId de Mongo)
+- `POST /api/suppliers`: crear proveedor
+- `PUT /api/suppliers/:id`: actualizar proveedor por ID
+- `DELETE /api/suppliers/:id`: eliminar proveedor por ID
+
+#### Ejemplos de Req and Res
+
+Request
+`POST /api/suppliers`
+
+```json
+{
+  "name": "PostMan",
+  "email": "postmanexample@gmail.com",
+  "phone": "88881111",
+  "address": "Right on the corner."
+}
+```
+
+Response
+
+```json
+{
+  "name": "PostMan",
+  "email": "postmanexample@gmail.com",
+  "phone": "88881111",
+  "address": "Right on the corner.",
+  "createdAt": "2026-07-28T20:12:31.572Z",
+  "updatedAt": "2026-07-28T20:12:31.572Z",
+  "id": "6a690d2fa1c1b3a868df86a6"
 }
 ```

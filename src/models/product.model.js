@@ -22,6 +22,10 @@ const productSchema = new mongoose.Schema(
       ref: "Category",
       required: [true, "El campo 'category' es obligatorio"],
     },
+    supplierId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Supplier",
+    },
   },
   {
     timestamps: true,

@@ -2,6 +2,7 @@ const express = require("express");
 
 const productsRoutes = require("./routes/products.routes");
 const categoriesRoutes = require("./routes/categories.routes");
+const suppliersRoutes = require("./routes/suppliers.routes");
 
 const app = express();
 
@@ -13,12 +14,14 @@ app.get("/", (req, res) => {
     endpoints: {
       products: "/api/products",
       categories: "/api/categories",
+      suppliers: "/api/suppliers",
     },
   });
 });
 
 app.use("/api/products", productsRoutes);
 app.use("/api/categories", categoriesRoutes);
+app.use("/api/suppliers", suppliersRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Ruta no encontrada" });
